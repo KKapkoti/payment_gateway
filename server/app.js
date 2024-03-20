@@ -1,21 +1,23 @@
+//app.js
+
 const express = require('express');
 const { config } = require("dotenv");
-const paymentRouter = require("./routes/paymentRouter.js");
-const cors = require("cors");
+
+const paymentRoute = require("./routes/paymentRouter.js");
+
 config({ path: "./config/.env" });
 
 
 const app = express();
 
 
-app.use(cors());
-app.use(express.json());
-
-
-app.use("/api", paymentRouter);
+app.use("/api", paymentRoute);
 
 
 
 module.exports =app;
+
+
+
 
 

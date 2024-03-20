@@ -1,20 +1,20 @@
-//controllers/.paymentController.js
+// //controllers/.paymentController.js
 
 
-// const crypto = require("crypto");
-const { instance } = require("../server.js"); 
-// const { Payment } = require("../models/paymentModel.js");
 
+
+//create order
 const checkout = async(req, res) =>{
     try{
+      const instance = req.app.locals.instance;
         const options = {
             amount: 5000,
             // amount: Number(req.body.amount * 100),
             currency: "INR",
     };
- 
     const order = await instance.orders.create(options);
 
+  console.log(order);
   res.status(200).json({
     success: true,
     order,
@@ -24,6 +24,10 @@ const checkout = async(req, res) =>{
     res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 };
+
+
+
+
 
 // Define the paymentVerification function
 // const paymentVerification = async (req, res) => {
@@ -66,9 +70,9 @@ const checkout = async(req, res) =>{
 
 
 module.exports = {
-    checkout
+  checkout
 };
-  
+
   
   
   

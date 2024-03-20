@@ -1,13 +1,17 @@
-const express = require('express');
-const router = express.Router();
-const { checkout, paymentVerification } = require('../controllers/paymentController');
+//routes/paymentRouter.js
 
+const express = require('express');
+const { checkout } = require('../controllers/paymentController.js');
+
+const router = express.Router();
 
 
 router.route("/checkout").post(checkout);
 
-router.route("/paymentverification").post(paymentVerification);
-
 
 
 module.exports = router;
+
+
+
+
