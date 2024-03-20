@@ -47,7 +47,7 @@ const Home = () => {
   return(
   <div className="home">
   <div className="card-container">
-    <Card amount={600} img="https://m.media-amazon.com/images/I/61aHJIjnH6L._SL1500_.jpg" checkoutHandler={checkoutHandler} />
+    <Card amount={2} img="https://m.media-amazon.com/images/I/61aHJIjnH6L._SL1500_.jpg" checkoutHandler={checkoutHandler} />
     <Card amount={40000} img="https://d2xamzlzrdbdbn.cloudfront.net/products/0238a59b-33ee-49da-a79e-c290f4ca180323130756.jpg" checkoutHandler={checkoutHandler} />
     <Card amount={500} img="https://m.media-amazon.com/images/I/61hzuoXwjqL._SL1500_.jpg" checkoutHandler={checkoutHandler} />
   </div>

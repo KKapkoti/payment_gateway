@@ -4,6 +4,7 @@ const express = require('express');
 const { config } = require("dotenv");
 const paymentRoute = require("./routes/paymentRouter.js");
 const cors = require("cors");
+
 config({ path: "./config/.env" });
 const app = express();
 

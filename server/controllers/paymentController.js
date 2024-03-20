@@ -1,6 +1,7 @@
-// //controllers/.paymentController.js
+//controllers/.paymentController.js
 
-
+const crypto = require('crypto');
+const Payment = require('../models/paymentModel.js');
 
 
 //create order
@@ -30,48 +31,42 @@ const checkout = async(req, res) =>{
 
 // Define the paymentVerification function
 const paymentVerification = async (req, res) => {
-//     try {
-//       const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    try {
+      const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
   
-//       const body = razorpay_order_id + "|" + razorpay_payment_id;
+      const body = razorpay_order_id + "|" + razorpay_payment_id;
   
-//       const expectedSignature = crypto
-//         .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
-//         .update(body.toString())
-//         .digest("hex");
+      const expectedSignature = crypto
+        .createHmac("sha256", process.env.RAZORPAY_API_SECRET)   //sha256-AlgoName
+        .update(body.toString())
+        .digest("hex");
   
-//       const isAuthentic = expectedSignature === razorpay_signature;
+      const isAuthentic = expectedSignature === razorpay_signature;
   
-//       if (isAuthentic) {
-//         // Save payment details to the database
-//         await Payment.create({
-//           razorpay_order_id,
-//           razorpay_payment_id,
-//           razorpay_signature,
-//         });
+      if (isAuthentic) {
+        // Save payment details to the database
+        await Payment.create({
+          razorpay_order_id,
+          razorpay_payment_id,
+          razorpay_signature,
+        });
   
-//         res.redirect(`http://localhost:3000/paymentsuccess?reference=${razorpay_payment_id}`);
-//       } else {
-//         res.status(400).json({ success: false, error: "Invalid Signature" });
-//       }
-//     } catch (error) {
-//       console.error("Error in payment verification:", error);
-//       res.status(500).json({ success: false, error: "Internal Server Error" });
-//     }
+        res.redirect(`http://www.localhost:3000/paymentsuccess?reference=${razorpay_payment_id}`);
+      } else {
+        res.status(400).json({ success: false, error: "Invalid Signature" });
+      }
+    } catch (error) {
+      console.error("Error in payment verification:", error);
+      res.status(500).json({ success: false, error: "Internal Server Error" });
+    }
   };
-  
 
 
-// Export the functions
+
+  // Export the functions
 module.exports = {
   checkout,
   paymentVerification,
 };
 
-  
-  
-  
-  
-  
-  
   
