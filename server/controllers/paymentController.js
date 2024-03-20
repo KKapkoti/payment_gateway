@@ -8,8 +8,7 @@ const checkout = async(req, res) =>{
     try{
       const instance = req.app.locals.instance;
         const options = {
-            amount: 5000,
-            // amount: Number(req.body.amount * 100),
+            amount: Number(req.body.amount * 100),
             currency: "INR",
     };
     const order = await instance.orders.create(options);
@@ -30,7 +29,7 @@ const checkout = async(req, res) =>{
 
 
 // Define the paymentVerification function
-// const paymentVerification = async (req, res) => {
+const paymentVerification = async (req, res) => {
 //     try {
 //       const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
   
@@ -59,18 +58,14 @@ const checkout = async(req, res) =>{
 //       console.error("Error in payment verification:", error);
 //       res.status(500).json({ success: false, error: "Internal Server Error" });
 //     }
-//   };
+  };
   
-//   // Export the functions
-//   module.exports = {
-//     checkout,
-//     paymentVerification,
-//   };
 
 
-
+// Export the functions
 module.exports = {
-  checkout
+  checkout,
+  paymentVerification,
 };
 
   

@@ -1,12 +1,15 @@
 //routes/paymentRouter.js
 
 const express = require('express');
-const { checkout } = require('../controllers/paymentController.js');
+const { checkout, paymentVerification } = require('../controllers/paymentController.js');
 
 const router = express.Router();
 
 
 router.route("/checkout").post(checkout);
+
+router.route("/paymentverification").post(paymentVerification);
+
 
 
 
