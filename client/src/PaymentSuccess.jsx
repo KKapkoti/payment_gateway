@@ -13,6 +13,6 @@ const PaymentSuccess = () => {
         </div>
     </div>
   );
-};
+}; 
 
 export default PaymentSuccess

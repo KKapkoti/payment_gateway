@@ -2,7 +2,8 @@
 
 const crypto = require('crypto');
 const Payment = require('../models/paymentModel.js');
-
+const fs = require('fs');
+const BASE_URL = process.env.BASE_URL
 
 //create order
 const checkout = async(req, res) =>{
@@ -37,7 +38,7 @@ const paymentVerification = async (req, res) => {
       const body = razorpay_order_id + "|" + razorpay_payment_id;
   
       const expectedSignature = crypto
-        .createHmac("sha256", process.env.RAZORPAY_API_SECRET)   //sha256-AlgoName
+        .createHmac("sha256", process.env.RAZORPAY_API_SECRET)   //sha256-Algo
         .update(body.toString())
         .digest("hex");
   
@@ -51,7 +52,7 @@ const paymentVerification = async (req, res) => {
           razorpay_signature,
         });
   
-        res.redirect(`http://www.localhost:3000/paymentsuccess?reference=${razorpay_payment_id}`);
+        res.redirect(`${process.env.BASE_URL}/paymentsuccess?reference=${razorpay_payment_id}`);               
       } else {
         res.status(400).json({ success: false, error: "Invalid Signature" });
       }
@@ -68,5 +69,9 @@ module.exports = {
   checkout,
   paymentVerification,
 };
+
+
+
+
 
   
