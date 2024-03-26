@@ -3,7 +3,6 @@
 const app  = require("./app.js");
 const RAZORPAY = require('razorpay');
 const { connectDB } = require("./config/database.js");
-
 connectDB();
 
 const instance = new RAZORPAY({
