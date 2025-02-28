@@ -25,9 +25,9 @@ const Home = () => {
         order_id: order.id,
         callback_url: "http://localhost:4000/api/paymentverification",
         prefill: {
-            name: "kavita",
-            email: "rs0275645@gmail.com",
-            contact: "7060742563"
+            name: "your name", // use your name which you want to use
+            email: "example@mail.com", // use your email
+            contact: "9999999999" // use your mobile number 
         },
         notes: {
             "address": "Razorpay Corporate Office"
